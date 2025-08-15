@@ -32,16 +32,21 @@ The project demonstrates skills in:
    ```bash
    git clone https://github.com/FOSUZO/port_scanner_dashboard.git
 
-2. Install dependencies:
+2. Navigate to the project folder:
+   ```bash
+   cd port_scanner_dashboard
+      
+3. Install dependencies:
    ```bash
    pip install -r requirements.txt 
 
-3. Run the server:
+4. Run the server:
    ```bash
    uvicorn main:app --reload 
 
-4. Open in browser: http://127.0.0.1:8000
-
+5. Open in browser:
+   ```cpp
+   http://127.0.0.1:8000
 
 Notes
 
@@ -51,9 +56,21 @@ Do not scan networks/devices without permission.
 
 ## Demo
 
-The process of working of port scaner:
+The working process of the port scanner:
 
 ![Screenshot](assets/screenshot.png)
+
+## Future Improvements
+- Add port range scanning for multiple ports at once
+
+- Service detection for open ports
+
+- Save results to JSON or CSV files
+
+- Improve web interface responsiveness for mobile devices
+
+
+
 
 
 
