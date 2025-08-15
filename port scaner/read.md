@@ -48,11 +48,6 @@ Notes
 For educational purposes only.
 
 Do not scan networks/devices without permission.
-## Demo
 
-The process of port scaner:
 
-![Screenshot](assets/screenshot.png)
-
- 
 
