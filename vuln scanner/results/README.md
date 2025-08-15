@@ -35,53 +35,72 @@ The application provides a **user-friendly web interface** with progress bar, lo
 ---
 
 ## Installation
-
 1. Clone the repository:
-
-```bash
- git clone https://github.com/YOUR_USERNAME/vuln_scanner_portfolio.git
- cd vuln_scanner_portfolio
-
-2. Create and activate a virtual environment:
- ```bash
- python -m venv venv
-# Windows
-venv\Scripts\activate
-# Linux/Mac
-source venv/bin/activate
-
+   ```bash
+   git clone https://github.com/YOUR_GITHUB_LINK/vuln_scanner_portfolio.git
+   cd vuln_scanner_portfolio
+2. Create and activate a virtual environment:   
+   ```bash
+   python -m venv venv
+   # Windows
+   venv\Scripts\activate
+   # Linux/Mac
+   source venv/bin/activate
 3. Install dependencies:
- ```bash
- pip install -r requirements.txt
+   ```bash
+   pip install -r requirements.txt
+4. How to Run
+   ```bash
+   uvicorn main:app --reload
+  
+ Open your browser at http://127.0.0.1:8000 
+ - Enter URLs separated by commas
 
-## How to Run
-  ```bash
-  uvicorn main:app --reload
+ - Click Scan
 
-## Open your browser at http://127.0.0.1:8000
+ - View scan results on the page
 
-- Enter URLs separated by commas
+ - JSON files are saved in results/ folder
 
-- Click Scan
+---
 
-- View scan results on the page
 
-- JSON files are saved in results/ folder
+## Demo
 
-## Folder Structure
- ```bash
- vuln_scanner_portfolio/
-│── main.py
-│── scanner.py
-│── templates/
-│    └── index.html
-│── static/
-│    └── style.css
-│── results/
-│── requirements.txt
-│── README.md
+Scan result of screenshot
+![Screenshot](assets/screenshot.png)
+
+---
+
+## Notes
+- For educational purposes only
+
+- Do not scan networks or websites without permission
+
+- Always test on your own lab environment or public test sites
+
+---
+
+5. Open in browser:
+   ```cpp
+   vuln_scanner_portfolio/
+   │── main.py
+   │── scanner.py
+   │── templates/
+   │    └── index.html
+   │── static/
+   │    └── style.css
+   │── results/
+   │── requirements.txt
+   │── README.md
 
 ## Author
- Sukhrob
- -Portfolio project for Cybersecurity studies
- - GitHub: YOUR_GITHUB_LINK
+# Sukhrob
+- Portfolio project for Cybersecurity studies
+- GitHub: https://github.com/FOSUZO/projects
+
+
+
+
+
+ 
