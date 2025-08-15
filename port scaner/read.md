@@ -31,7 +31,6 @@ The project demonstrates skills in:
 1. Clone the repository:
    ```bash
    git clone https://github.com/FOSUZO/port_scanner_dashboard.git
-
 2. Navigate to the project folder:
    ```bash
    cd port_scanner_dashboard
@@ -68,6 +67,7 @@ The working process of the port scanner:
 - Save results to JSON or CSV files
 
 - Improve web interface responsiveness for mobile devices
+
 
 
 
