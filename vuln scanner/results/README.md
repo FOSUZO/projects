@@ -69,7 +69,8 @@ The application provides a **user-friendly web interface** with progress bar, lo
 
 The result of scanning:
 
-![Scan Results Screenshot](https://github.com/FOSUZO/projects/blob/main/vuln_scanner_portfolio/assets/screenshot.png?raw=true)
+![Screenshot](assets/screenshot.png)
+
 
 
 ---
@@ -106,6 +107,7 @@ The result of scanning:
 
 
  
+
 
 
 
