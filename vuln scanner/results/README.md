@@ -68,7 +68,7 @@ The application provides a **user-friendly web interface** with progress bar, lo
 ## Demo
 
 Scan result of screenshot
-![Screenshot](assets/screenshot.png)
+
 
 ---
 
@@ -104,4 +104,5 @@ Scan result of screenshot
 
 
  
+
 
