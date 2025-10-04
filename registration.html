@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ro'yxatdan o'tish / Kirish</title>
+  <style>
+    :root{
+      --primary:#6C5DD3;
+      --accent:#EF4A4A;
+      --bg-light:#f0f0f5;
+      --bg-dark:#1e1e2e;
+      --card-light:#fff;
+      --card-dark:#2a2a40;
+      --text-light:#0f172a;
+      --text-dark:#f8fafc;
+      --radius:20px;
+      --shadow:0 20px 40px rgba(0,0,0,0.08);
+      --shadow-dark:0 20px 40px rgba(0,0,0,0.4);
+      --transition:.3s ease;
+    }
+
+    *{box-sizing:border-box; margin:0; padding:0; font-family:Inter,sans-serif;}
+
+    body{
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:flex-start;
+      background:var(--bg-light);
+      color:var(--text-light);
+      padding:40px 20px;
+      transition: background var(--transition), color var(--transition);
+    }
+
+    body.dark{
+      background:var(--bg-dark);
+      color:var(--text-dark);
+    }
+
+    .theme-toggle{
+      position:fixed;
+      top:20px;
+      right:20px;
+      width:50px;
+      height:50px;
+      border-radius:50%;
+      border:2px solid #fff;
+      background:transparent;
+      color:#fff;
+      font-size:22px;
+      cursor:pointer;
+      transition: all var(--transition);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+
+    main.hero{
+      width:100%;
+      max-width:450px;
+      background:var(--card-light);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:40px 30px;
+      transition: background var(--transition), box-shadow var(--transition);
+    }
+
+    body.dark main.hero{
+      background:var(--card-dark);
+      box-shadow:var(--shadow-dark);
+    }
+
+    .hero-title{
+      font-size:28px;
+      font-weight:800;
+      margin-bottom:8px;
+      text-align:center;
+    }
+
+    .hero-desc{
+      color:gray;
+      font-size:14px;
+      text-align:center;
+      margin-bottom:24px;
+    }
+
+    .card{
+      background:inherit;
+      padding:20px;
+      border-radius:var(--radius);
+      box-shadow:0 8px 24px rgba(0,0,0,0.05);
+      transition: box-shadow var(--transition);
+    }
+
+    form{display:flex; flex-direction:column; gap:12px;}
+    label{font-size:13px; font-weight:500;}
+    input{
+      padding:12px 14px;
+      border-radius:12px;
+      border:1px solid #ccc;
+      font-size:14px;
+      transition: border-color var(--transition), background var(--transition), color var(--transition);
+    }
+    body.dark input{
+      background:#1f1f34;
+      color:#fff;
+      border:1px solid #555;
+    }
+    input:focus{
+      outline:none;
+      border-color:var(--primary);
+    }
+
+    .row{
+      display:flex;
+      gap:10px;
+      margin-top:10px;
+    }
+
+    .btn{
+      flex:1;
+      padding:12px 0;
+      border-radius:999px;
+      border:none;
+      cursor:pointer;
+      font-weight:700;
+      color:#fff;
+      background:var(--primary);
+      transition: background var(--transition), transform var(--transition);
+    }
+    .btn:hover{
+      background:#5848c2;
+      transform:translateY(-2px);
+    }
+
+    .btn-ghost{
+      flex:1;
+      padding:12px 0;
+      border-radius:999px;
+      border:1px solid #ccc;
+      background:transparent;
+      cursor:pointer;
+      font-weight:600;
+      transition: all var(--transition);
+    }
+    body.dark .btn-ghost{border-color:#888;color:#fff;}
+    .btn-ghost:hover{
+      background:rgba(0,0,0,0.05);
+    }
+
+    .msg{
+      padding:10px;
+      border-radius:10px;
+      font-size:13px;
+      display:none;
+      margin-bottom:8px;
+      transition: all var(--transition);
+    }
+    .msg.error{background:#fee2e2;color:#b91c1c; display:block;}
+    .msg.success{background:#d1fae5;color:#065f46; display:block;}
+
+    .profile{
+      margin-top:12px;
+      padding:14px;
+      border-radius:12px;
+      display:none;
+      flex-direction:column;
+      gap:6px;
+      border:1px solid #ccc;
+    }
+    body.dark .profile{border-color:#555;}
+  </style>
+</head>
+<body>
+  <button id="themeToggle" class="theme-toggle">🌙</button>
+  <main class="hero">
+    <div class="hero-title">Ro'yxatdan o'tish / Kirish</div>
+    <p class="hero-desc">Hisobingiz yo'qmi? Ro'yxatdan o'ting. Agar mavjud bo'lsa — kirish qiling.</p>
+
+    <div class="card">
+      <div id="regMsg" class="msg"></div>
+      <div id="loginMsg" class="msg"></div>
+
+      <!-- Register Form -->
+      <form id="registerForm">
+        <h3>Ro'yxatdan o'tish</h3>
+        <label>Email</label>
+        <input id="regEmail" type="email" required />
+        <label>Foydalanuvchi nomi</label>
+        <input id="regUsername" type="text" required />
+        <label>Parol</label>
+        <input id="regPassword" type="password" required />
+        <label>Parolni takrorlang</label>
+        <input id="regConfirm" type="password" required />
+        <div class="row">
+          <button type="submit" class="btn">Ro'yxatdan o'tish</button>
+          <button type="button" class="btn-ghost" id="toLogin">Kirish</button>
+        </div>
+      </form>
+
+      <!-- Login Form -->
+      <form id="loginForm" style="display:none">
+        <h3>Kirish</h3>
+        <label>Email yoki username</label>
+        <input id="loginId" type="text" required />
+        <label>Parol</label>
+        <input id="loginPassword" type="password" required />
+        <div class="row">
+          <button type="submit" class="btn">Kirish</button>
+          <button type="button" class="btn-ghost" id="toRegister">Ro'yxatdan o'tish</button>
+        </div>
+        <div class="profile" id="profilePanel">
+          <div>
+            <b id="whoName"></b><br>
+            <span id="whoEmail"></span>
+          </div>
+          <button id="logoutBtn" class="btn-ghost">Chiqish</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <script>
+    // Register
+    const regForm=document.getElementById("registerForm");
+    const loginForm=document.getElementById("loginForm");
+    const toLogin=document.getElementById("toLogin");
+    const toRegister=document.getElementById("toRegister");
+    const regMsg=document.getElementById("regMsg");
+    const loginMsg=document.getElementById("loginMsg");
+    const profile=document.getElementById("profilePanel");
+    const whoName=document.getElementById("whoName");
+    const whoEmail=document.getElementById("whoEmail");
+    const logoutBtn=document.getElementById("logoutBtn");
+
+    regForm.addEventListener("submit",e=>{
+      e.preventDefault();
+      const email=document.getElementById("regEmail").value;
+      const user=document.getElementById("regUsername").value;
+      const pass=document.getElementById("regPassword").value;
+      const conf=document.getElementById("regConfirm").value;
+
+      if(pass!==conf){
+        regMsg.textContent="Parollar mos emas!";
+        regMsg.className="msg error"; return;
+      }
+      const data={email,user,pass};
+      localStorage.setItem("user",JSON.stringify(data));
+      regMsg.textContent="Muvaffaqiyatli ro'yxatdan o'tdingiz!";
+      regMsg.className="msg success";
+    });
+
+    // Login
+    loginForm.addEventListener("submit",e=>{
+      e.preventDefault();
+      const loginId=document.getElementById("loginId").value;
+      const loginPass=document.getElementById("loginPassword").value;
+      const data=JSON.parse(localStorage.getItem("user"));
+
+      if(!data){loginMsg.textContent="Avval ro'yxatdan o'ting.";loginMsg.className="msg error";return;}
+      if((loginId===data.email||loginId===data.user)&&loginPass===data.pass){
+        loginMsg.textContent="Xush kelibsiz!";loginMsg.className="msg success";
+        whoName.textContent=data.user;
+        whoEmail.textContent=data.email;
+        profile.style.display="flex";
+      }else{
+        loginMsg.textContent="Login yoki parol xato!";loginMsg.className="msg error";
+      }
+    });
+
+    // Form switch
+    toLogin.onclick=()=>{regForm.style.display="none";loginForm.style.display="flex";};
+    toRegister.onclick=()=>{loginForm.style.display="none";regForm.style.display="flex";};
+
+    // Logout
+    logoutBtn.onclick=()=>{profile.style.display="none";loginMsg.textContent="Chiqdingiz.";loginMsg.className="msg";};
+
+    // Dark mode
+    const btn=document.getElementById("themeToggle");
+    if(localStorage.getItem("theme")==="dark"){document.body.classList.add("dark");btn.textContent="☀️";}
+    btn.addEventListener("click",()=>{
+      document.body.classList.toggle("dark");
+      if(document.body.classList.contains("dark")){localStorage.setItem("theme","dark");btn.textContent="☀️";}
+      else{localStorage.setItem("theme","light");btn.textContent="🌙";}
+    });
+  </script>
+</body>
+</html>

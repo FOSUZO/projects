@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Kontakt ikonalar — chiroyli dizayn</title>
+  <style>
+    :root {
+      --accent:#06b6d4;
+      --muted:#94a3b8;
+      --glass: rgba(255,255,255,0.08);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:linear-gradient(90deg,#ede8ca,#dad2ab);
+      color:#0f172a;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:32px;
+    }
+
+    .card{
+      background:#ffffffcc;
+      backdrop-filter: blur(10px);
+      border-radius:16px;
+      padding:24px;
+      width:100%;
+      max-width:720px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    h1{font-size:22px;margin-bottom:10px}
+    p.lead{color:#444;margin-bottom:20px}
+
+    .contacts{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:16px;
+    }
+
+    .item{
+      background:var(--glass);
+      border-radius:12px;
+      padding:14px;
+      display:flex;
+      align-items:center;
+      gap:14px;
+      transition:transform .2s ease, box-shadow .2s ease;
+      cursor:pointer;
+    }
+    .item:hover{transform:translateY(-5px); box-shadow:0 8px 20px rgba(0,0,0,0.25)}
+
+    .icon{
+      width:52px;height:52px;border-radius:12px;
+      display:flex;align-items:center;justify-content:center;
+      flex-shrink:0;
+      font-size:20px;
+      color:#fff;
+    }
+    .icon.insta {background:linear-gradient(45deg,#f472b6,#fb923c,#06b6d4);}
+    .icon.tg {background:#3b82f6;}
+    .icon.mail {background:#10b981;}
+    .icon.phone {background:linear-gradient(45deg,#7c3aed,#a78bfa);} /* telefon uchun binafsha fon */
+
+    .meta{flex:1;min-width:0}
+    .meta .title{font-weight:600;font-size:15px;margin-bottom:4px}
+    .meta .sub{font-size:13px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+    .actions{flex-shrink:0}
+    button.copy{
+      background:transparent;
+      border:1px solid rgba(0,0,0,0.15);
+      padding:6px 12px;
+      border-radius:8px;
+      font-size:13px;
+      cursor:pointer;
+      transition:all .2s ease;
+    }
+    button.copy:hover{
+      background:rgba(0,0,0,0.06);
+    }
+
+    /* Dark mode */
+    body.dark {
+      background:linear-gradient(135deg,#0f172a,#1e293b);
+      color:#e2e8f0;
+    }
+    body.dark .card{
+      background:#1e293bcc;
+      color:#e2e8f0;
+      box-shadow:0 8px 25px rgba(0,0,0,0.7);
+    }
+    body.dark .lead{color:#cbd5e1}
+    body.dark button.copy{
+      color:#f8fafc;
+      border:1px solid rgba(255,255,255,0.3);
+    }
+    body.dark button.copy:hover{
+      background:rgba(255,255,255,0.06);
+    }
+
+    /* Theme toggle */
+    .theme-toggle {
+      position: fixed;
+      top: 15px;
+      right: 20px;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.9);
+      background: transparent;
+      color: #fff;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      transition: background 0.3s, color 0.3s;
+    }
+    .theme-toggle:hover {background: rgba(255,255,255,0.1);}
+
+    /* Small screens */
+    @media (max-width:420px){
+      .contacts{gap:12px}
+      .icon{width:46px;height:46px;border-radius:10px;font-size:18px}
+      button.copy{padding:6px 10px;font-size:12px}
+    }
+  </style>
+</head>
+<body>
+  <button id="themeToggle" class="theme-toggle">🌙</button>
+  <div class="card" role="region" aria-label="Kontaktlar">
+    <h1>Bog'lanish uchun</h1>
+    <p class="lead">Instagram, Telegram, Email va Telefon — qulay aloqalar.</p>
+
+    <div class="contacts">
+      <!-- Instagram -->
+      <div class="item" onclick="openLink('https://www.instagram.com/khaydarova_madinaa/')">
+        <div class="icon insta" aria-hidden="true">📸</div>
+        <div class="meta">
+          <div class="title">Instagram</div>
+          <div class="sub">@khaydarova_madinaa</div>
+        </div>
+        <div class="actions">
+          <button class="copy" onclick="copyText(event, 'https://www.instagram.com/khaydarova_madinaa/')">Nusxa olish</button>
+        </div>
+      </div>
+
+      <!-- Telegram -->
+      <div class="item" onclick="openLink('https://t.me/KhaydarovaMadinaa')">
+        <div class="icon tg" aria-hidden="true">✈️</div>
+        <div class="meta">
+          <div class="title">Telegram</div>
+          <div class="sub">@KhaydarovaMadinaa</div>
+        </div>
+        <div class="actions">
+          <button class="copy" onclick="copyText(event, '@KhaydarovaMadinaa')">Nusxa olish</button>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="item" onclick="openLink('mailto:haydarovamadina65@gmail.com')">
+        <div class="icon mail" aria-hidden="true">📧</div>
+        <div class="meta">
+          <div class="title">Email</div>
+          <div class="sub">haydarovamadina65@gmail.com</div>
+        </div>
+        <div class="actions">
+          <button class="copy" onclick="copyText(event, 'haydarovamadina65@gmail.com')">Nusxa olish</button>
+        </div>
+      </div>
+
+      <!-- Telefon -->
+      <div class="item" onclick="openLink('tel:+998901234567')">
+        <div class="icon phone" aria-hidden="true">📞</div>
+        <div class="meta">
+          <div class="title">Telefon</div>
+          <div class="sub">#</div>
+        </div>
+        <div class="actions">
+          <button class="copy" onclick="copyText(event, '+998901234567')">Nusxa olish</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openLink(url){
+      // ochishni alohida funksiya orqali amalga oshiramiz
+      window.open(url,'_blank');
+    }
+
+    function copyText(e,text){
+      e.stopPropagation(); // item onclick ishlamasligi uchun
+      if(!navigator.clipboard){
+        // fallback
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        try{ document.execCommand('copy'); showCopied(e); } catch(_) { alert('Nusxa olish imkoni yo‘q'); }
+        ta.remove();
+        return;
+      }
+      navigator.clipboard.writeText(text).then(()=>{
+        showCopied(e);
+      }).catch(()=>{ alert('Nusxa olishda xatolik'); });
+    }
+
+    function showCopied(e){
+      const btn = e.target;
+      const old = btn.innerText;
+      btn.innerText = '✅ Nusxalandi';
+      setTimeout(()=> btn.innerText = old, 1200);
+    }
+
+    // Theme toggle
+    const btn = document.getElementById('themeToggle');
+    if (localStorage.getItem("theme") === "dark") {
+      document.body.classList.add("dark");
+      btn.textContent = "☀️";
+    }
+    btn.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      if (document.body.classList.contains("dark")) {
+        localStorage.setItem("theme", "dark");
+        btn.textContent = "☀️";
+      } else {
+        localStorage.setItem("theme", "light");
+        btn.textContent = "🌙";
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,335 @@
+
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Online Library — Hero Illustration (SVG)</title>
+  <style>
+    :root{
+      --bg:#f8efe0;
+      --nav:#0f172a;
+      --muted:#6b7280;
+      --accent1:#fb923c;
+      --accent2:#0369a1; 
+      --accent3:#ef4444; 
+      --accent4:#06b6d4;
+      --bookcase:#0f172a;
+    }
+    html,body{height:100%;}
+    body{
+      margin:0; font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:var(--bg); color:var(--nav); -webkit-font-smoothing:antialiased;
+      display:flex; align-items:flex-start; justify-content:center; padding:28px;
+    }
+    .container{width:100%;max-width:1150px}
+    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+    .logo{font-weight:800;letter-spacing:0.6px;font-size:50px}
+    nav a{margin-left:22px;text-decoration:none;color:var(--muted);font-weight:600;font-size:13px}
+
+    .hero{background:#fff7ed;padding:28px;border-radius:18px;box-shadow:0 8px 30px rgba(15,23,42,0.06)}
+    .grid{display:grid;grid-template-columns:1fr 560px;gap:28px;align-items:center}
+    .title{font-size:48px;line-height:1; font-weight:800;margin:0;color:var(--nav)}
+    .subtitle{color:var(--muted);margin-top:12px;max-width:540px}
+    .cta{margin-top:18px}
+    .btn{background:#ef4444;color:white;padding:12px 22px;border-radius:999px;border:0;font-weight:700;cursor:pointer}
+    .btn:hover { }
+
+  
+    @media (max-width:900px){
+      .grid{grid-template-columns:1fr;}
+      .title{font-size:36px}
+      nav a{margin-left:12px}
+    }
+
+
+    .art{width:100%;height:auto;display:flex;justify-content:center}
+    svg{max-width:100%;height:auto}
+
+    .theme-toggle {
+  position: fixed;
+  top: 15px;
+  right: 20px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.992); 
+  background: transparent;
+  color: #fcfcfc;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  transition: background 0.3s, color 0.3s;
+}
+
+.theme-toggle:hover {
+  background: rgba(251, 255, 1, 0.1);
+}
+
+body {
+  background: var(--bg);
+  color: var(--nav);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.hero {
+  background: #fff7ed;
+  color: var(--nav);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+
+body.dark {
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: #f1f5f9;
+}
+
+body.dark .hero {
+  background: #1e293b;
+  color: #f1f5f9;
+}
+
+body.dark nav a {
+  color: #cbd5e1;
+}
+
+body.dark .btn {
+  background: #06b6d4;
+}
+
+body.dark .title {
+  color: #f1f5f9;
+}
+
+body.dark .subtitle {
+  color: #cbd5e1; 
+}
+
+.btn {
+  background:#ef4444;
+  color:white;
+}
+
+
+body.dark .btn {
+  background:#06b6d4; 
+  color:#fff;
+}
+
+
+body.dark svg rect[fill="#ef4444"] {
+  fill:#06b6d4 !important;
+}
+body.dark svg text {
+  fill:#fff !important;
+}
+    /* 🔎 Qidiruv dizayni */
+    .search-form {
+      display: flex;
+      align-items: center;
+      margin-left: 20px;
+    }
+    .search-form input {
+      padding: 6px 10px;
+      border: 1px solid #ccc;
+      border-radius: 20px 0 0 20px;
+      outline: none;
+    }
+    .search-form button {
+      padding: 6px 12px;
+      border: none;
+      background: var(--accent3);
+      color: #fff;
+      border-radius: 0 20px 20px 0;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <button id="themeToggle" class="theme-toggle">🌙</button> 
+  <div class="container">
+    <header>
+      <div class="logo">SAHIFA</div>
+      <nav>
+        <a href="books.html">HOME</a>
+        <a href="about.html">ABOUT</a>
+        <a href="contact.html">CONTACT</a>
+        <a href="registration.html">SIGN IN</a>
+      </nav> 
+      
+    </header>
+
+    <main class="hero">
+      <div class="grid">
+        <div>
+          <h1 class="title">ONLINE LIBRARY</h1>
+          <p class="subtitle">📚Sahifa — kitobsevarlar uchun iliq burchak.
+
+Yangi taassurotlar, yangi tanishuvlar, yangi ilhom va bilimlar — barchasi bitta Sahifada.</p>
+
+          <a href="books.html"><div class="cta"><button class="btn">READ NOW</button></div></a>
+        </div>
+
+        <div class="art" aria-hidden>
+          
+          <svg width="560" height="420" viewBox="0 0 560 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Online library illustration">
+            <defs>
+              <linearGradient id="glow" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.6"/>
+                <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+
+           
+            <rect x="16" y="40" rx="14" ry="14" width="528" height="332" fill="#fff" opacity="0.7" />
+
+            
+            <g transform="translate(56,72)">
+              
+              <rect x="0" y="0" width="360" height="276" rx="6" fill="#0f172a" />
+              <rect x="8" y="8" width="344" height="260" rx="2" fill="#081226" />
+
+              
+              <rect x="12" y="8" width="336" height="4" fill="#0b1220" opacity="0.6"/>
+              <rect x="12" y="104" width="336" height="4" fill="#0b1220" opacity="0.6"/>
+              <rect x="12" y="200" width="336" height="4" fill="#0b1220" opacity="0.6"/>
+
+              
+              <g transform="translate(20,16)">
+                <rect x="0" y="0" width="18" height="72" rx="2" fill="#fb923c" />
+                <rect x="22" y="0" width="14" height="86" rx="2" fill="#ef4444" />
+                <rect x="40" y="6" width="16" height="70" rx="2" fill="#0369a1" />
+                <rect x="60" y="2" width="12" height="84" rx="2" fill="#fb923c" />
+                <rect x="76" y="12" width="10" height="74" rx="2" fill="#06b6d4" />
+                <rect x="90" y="0" width="16" height="86" rx="2" fill="#fb923c" />
+                <rect x="110" y="8" width="14" height="72" rx="2" fill="#0369a1" />
+                <rect x="128" y="4" width="12" height="80" rx="2" fill="#fb923c" />
+                <rect x="142" y="0" width="18" height="86" rx="2" fill="#06b6d4" />
+                <rect x="162" y="10" width="12" height="66" rx="2" fill="#fde68a" />
+              </g>
+
+             
+              <g transform="translate(20,112)">
+                <rect x="0" y="0" width="16" height="56" rx="2" fill="#fde68a" />
+                <rect x="18" y="6" width="12" height="50" rx="2" fill="#ef4444" />
+                <rect x="34" y="0" width="18" height="64" rx="2" fill="#06b6d4" />
+                <rect x="54" y="8" width="10" height="56" rx="2" fill="#fb923c" />
+                <rect x="68" y="4" width="12" height="60" rx="2" fill="#0369a1" />
+                <rect x="84" y="2" width="14" height="62" rx="2" fill="#fde68a" />
+                <rect x="102" y="10" width="10" height="54" rx="2" fill="#06b6d4" />
+                <rect x="118" y="0" width="16" height="64" rx="2" fill="#fb923c" />
+                <rect x="136" y="8" width="12" height="56" rx="2" fill="#0369a1" />
+                <rect x="152" y="4" width="18" height="60" rx="2" fill="#fde68a" />
+              </g>
+
+              
+              <g transform="translate(20,208)">
+                <rect x="0" y="0" width="18" height="60" rx="2" fill="#0369a1" />
+                <rect x="20" y="6" width="12" height="54" rx="2" fill="#fb923c" />
+                <rect x="36" y="4" width="14" height="58" rx="2" fill="#ef4444" />
+                <rect x="54" y="10" width="10" height="52" rx="2" fill="#fde68a" />
+                <rect x="68" y="0" width="16" height="60" rx="2" fill="#06b6d4" />
+                <rect x="88" y="6" width="12" height="54" rx="2" fill="#fb923c" />
+                <rect x="104" y="2" width="14" height="58" rx="2" fill="#0369a1" />
+                <rect x="122" y="8" width="10" height="52" rx="2" fill="#fde68a" />
+                <rect x="136" y="4" width="18" height="56" rx="2" fill="#ef4444" />
+              </g>
+            </g>
+
+           
+            <g transform="translate(24,218)">
+              
+              <ellipse cx="36" cy="64" rx="64" ry="18" fill="#fb923c" opacity="0.95" />
+              <ellipse cx="36" cy="56" rx="48" ry="24" fill="#fb923c" />
+              
+              <circle cx="28" cy="28" r="10" fill="#fdecd9" />
+              <rect x="12" y="36" rx="8" width="32" height="28" fill="#f59e0b" />
+              
+              <rect x="8" y="46" width="28" height="18" rx="3" fill="#0369a1" />
+            </g>
+
+           
+            <g transform="translate(190,238)">
+              <ellipse cx="72" cy="84" rx="70" ry="14" fill="#efefef" opacity="0.7" />
+              <circle cx="48" cy="28" r="12" fill="#fdecd9" />
+              <rect x="30" y="40" rx="10" width="36" height="36" fill="#ef4444" />
+              <rect x="34" y="56" width="28" height="18" rx="3" fill="#075985" />
+            </g>
+
+            
+            <g transform="translate(280,254)">
+              <ellipse cx="44" cy="68" rx="48" ry="10" fill="#efefef" opacity="0.7" />
+              <circle cx="36" cy="18" r="9" fill="#fdecd9" />
+              <rect x="22" y="28" rx="8" width="28" height="28" fill="#0284c7" />
+              <rect x="26" y="40" width="22" height="14" rx="3" fill="#0369a1" />
+            </g>
+
+           
+            <g transform="translate(420,206)">
+              <ellipse cx="36" cy="108" rx="34" ry="10" fill="#efefef" opacity="0.7" />
+             
+              <rect x="12" y="36" width="48" height="56" rx="8" fill="#fde8d9" />
+              <rect x="16" y="46" width="40" height="44" rx="6" fill="#f59e0b" />
+             
+              <circle cx="36" cy="22" r="12" fill="#fdecd9" />
+              
+              <circle cx="30" cy="22" r="3" fill="#0f172a" />
+              <circle cx="42" cy="22" r="3" fill="#0f172a" />
+              <rect x="33" y="21" width="6" height="1" fill="#0f172a" />
+              
+              <rect x="22" y="38" width="28" height="18" rx="3" fill="#083344" />
+            </g>
+
+            
+            <g transform="translate(220,360)">
+              <rect x="-48" y="-8" rx="18" width="96" height="36" fill="#ef4444"/>
+              <text x="0" y="16" font-family="Inter, Arial" font-weight="700" font-size="12" fill="#fff" text-anchor="middle">READ NOW</text>
+            </g>
+
+          </svg>
+        </div>
+      </div>
+    </main>
+  </div>
+  
+
+<script>
+  const btn = document.getElementById('themeToggle');
+
+  
+  if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark");
+    btn.textContent = "☀️";
+  }
+
+  btn.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+    
+    if (document.body.classList.contains("dark")) {
+      localStorage.setItem("theme", "dark");
+      btn.textContent = "☀️";
+    } else {
+      localStorage.setItem("theme", "light");
+      btn.textContent = "🌙";
+    }
+  });
+   // 🔎 Qidiruv funksiyasi
+  function searchBooks() {
+    const query = document.getElementById("searchInput").value.trim();
+    if (query) {
+      // Qidiruvni books.html sahifasiga yuboradi
+      window.location.href = "books.html?search=" + encodeURIComponent(query);
+    }
+    return false; // sahifa yangilanmasin
+  }
+  
+</script>
+
+
+
+
+</body>
+</html>

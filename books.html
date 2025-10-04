@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Books Showcase</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f0e9cb,  #d4cba1f3);
+      color: #fff;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 30px 0 20px;
+      font-size: 2.4rem;
+      color: #ffffff;
+    }
+
+    .books-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 25px;
+      padding: 20px 40px;
+    }
+
+    .book {
+      background: #fff;
+      color: #333;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .book:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.25);
+    }
+
+    .book img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .book-title {
+      padding: 12px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+
+    .like-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 8px;
+      font-size: 1rem;
+      border: none;
+      background: none;
+      cursor: pointer;
+      color: #e63946;
+    }
+
+    .like-btn:disabled {
+      cursor: default;
+      opacity: 0.6;
+    }
+
+    .like-btn span {
+      margin-left: 5px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 15px;
+      right: 20px;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      border: 3px solid rgba(255, 255, 255, 0.992);
+      background: transparent;
+      color: #fff;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .theme-toggle:hover {
+      background: rgba(251, 255, 1, 0.1);
+    }
+
+    body.dark {
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #e2e8f0;
+    }
+
+    body.dark h1 {
+      color: #f8fafc;
+    }
+
+    body.dark .book {
+      background: #1e293b;
+      color: #e2e8f0;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.7);
+    }
+
+    body.dark .book-title {
+      color: #cbd5e1;
+    }
+    .like-btn.liked {
+  color: red;
+}
+.like-btn span {
+  margin-left: 5px;
+  font-weight: bold;
+  color: #333; /* kunduzgi rang */
+}
+
+body.dark .like-btn span {
+  color: #fff; /* tun rejimida oq rang */
+}
+
+  </style>
+</head>
+<body>
+  
+  <h1>KITOBLAR OLAMI</h1>
+<div style="text-align:center; margin-bottom:20px;">
+  <input type="text" id="searchInput" placeholder="Kitobni qidirish..." style="padding:8px 12px; border-radius:6px; width:300px; font-size:16px;">
+</div>
+
+  <button id="themeToggle" class="theme-toggle">🌙</button>
+
+  <div class="books-grid">
+    <div class="book">
+      <a href="https://t.me/+oiejG7dxpls5NjYy">
+        <img src="1b2b062c84559bc084913a1b2911fe9d.webp" alt="O'tgan kunlar">
+        <div class="book-title">O'tgan kunlar</div>
+      </a>
+      <button class="like-btn">❤️ <span>0</span></button>
+    </div>
+    
+    <div class="book">
+      <a href="https://t.me/+6cDaKsktNXMyMDQ6">
+        <img src="img-file-ca39b9e64de676b31178a67d9141b808.jpg" alt="Kichkina Shahzod">
+        <div class="book-title">Kichkina Shahzod</div>
+      </a>
+      <button class="like-btn">❤️ <span>0</span></button>
+    </div>
+
+    <div class="book">
+      <a href="https://t.me/+jSj8swiKMt43Y2Y6">
+        <img src="Ikki eshik orasi.png" alt="Ikki eshik orasi">
+        <div class="book-title">Ikki eshik orasi</div>
+      </a>
+      <button class="like-btn">❤️ <span>0</span></button>
+    </div>
+
+    <div class="book">
+      <a href="https://t.me/+PiYBGAcVc_8yZTUy">
+        <img src="unnamed.jpg" alt="Kecha va Kunduz">
+        <div class="book-title">Kecha va Kunduz</div>
+      </a>
+      <button class="like-btn">❤️ <span>0</span></button>
+    </div>
+
+    <div class="book">
+      <a href="https://t.me/+kWShIktWA4kzZDli">
+        <img src="images.jpg" alt="Белые ночи">
+        <div class="book-title">Белые ночи</div>
+      </a>
+      <button class="like-btn">❤️ <span>0</span></button>
+    </div>
+
+    <div class="book">
+      <a href="https://t.me/+EKFlXNyUZ8E4OWUy">
+        <img src="img-file-5dae11c36d59db78aaef346583800928.jpg" alt="Yashamoq">
+        <div class="book-title">Yashamoq</div>
+      </a>
+      <button class="like-btn">❤️ <span>0</span></button>
+    </div>
+
+    <div class="book">
+      <a href="https://t.me/+v9UTtDCvuAIyNjJi">
+        <img src="Alkimyogar.jpg" alt="Alkimyogar">
+        <div class="book-title">Alkimyogar</div>
+      </a>
+      <button class="like-btn">❤️ <span>0</span></button>
+    </div>
+
+    <div class="book">
+      <a href="https://t.me/+N9b43Ggif2RlMmFi">
+        <img src="andisha.jpg" alt="Andisha va G'urur">
+        <div class="book-title">Andisha va G'urur</div>
+      </a>
+      <button class="like-btn">❤️ <span>0</span></button>
+    </div>
+
+    <div class="book">
+      <a href="https://t.me/+FywIh3IHSwg0ZTFi">
+        <img src="payg'ambarlar tarixi.jpg" alt="Payg'ambarlar tarixi">
+        <div class="book-title">Payg'ambarlar tarixi</div>
+      </a>
+      <button class="like-btn">❤️ <span>0</span></button>
+    </div>
+
+    <div class="book">
+      <a href="https://t.me/+LHsZajm9bExmYjY6">
+        <img src="Atomic habits.jpg" alt="Atom odatlari">
+        <div class="book-title">Atom odatlari</div>
+      </a>
+      <button class="like-btn">❤️ <span>0</span></button>
+    </div>
+
+    <div class="book">
+      <a href="https://t.me/+3-JMbUgzQTI3MjFi">
+        <img src="Mehrobdan chayon.jpg" alt="Mehrobdan chayon">
+        <div class="book-title">Mehrobdan chayon</div>
+      </a>
+      <button class="like-btn">❤️ <span>0</span></button>
+    </div>
+
+    <div class="book">
+      <a href="https://t.me/+PGPnbIxsBtRhZmUy">
+        <img src="Odam bo'lish qiyin.jpg" alt="Odam bo'lish qiyin">
+        <div class="book-title">Odam bo'lish qiyin</div>
+      </a>
+      <button class="like-btn">❤️ <span>0</span></button>
+    </div>
+
+    <div class="book">
+      <a href="">
+        <img src="Dahshat.png" alt="Dahshat">
+        <div class="book-title">Dahshat</div>
+      </a>
+      <button class="like-btn">❤️ <span>0</span></button>
+    </div>
+
+    <div class="book">
+      <a href="https://t.me/+imkCT-4zY21iOGFi">
+        <img src="Fyodor_Dostoyevskiy._Telba_roman.jpg" alt="Telba">
+        <div class="book-title">Telba</div>
+      </a>
+      <button class="like-btn">❤️ <span>0</span></button>
+    </div>
+  </div>
+
+<script>
+  // Theme Toggle
+  const btn = document.getElementById("themeToggle");
+  if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark");
+    btn.textContent = "☀️";
+  }
+  btn.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+    if (document.body.classList.contains("dark")) {
+      localStorage.setItem("theme", "dark");
+      btn.textContent = "☀️";
+    } else {
+      localStorage.setItem("theme", "light");
+      btn.textContent = "🌙";
+    }
+  });
+
+  // Like buttons
+const likeButtons = document.querySelectorAll(".like-btn");
+
+likeButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    const span = button.querySelector("span");
+    let count = parseInt(span.textContent);
+
+    if (button.classList.contains("liked")) {
+      // Agar bosilgan bo‘lsa qaytarib olish
+      span.textContent = count - 1;
+      button.classList.remove("liked");
+    } else {
+      // Agar hali bosilmagan bo‘lsa like qo‘shish
+      span.textContent = count + 1;
+      button.classList.add("liked");
+    }
+  });
+});
+
+</script>
+
+<script>
+const inputField = document.getElementById('searchInput');
+
+inputField.addEventListener('input', () => {
+  const query = inputField.value.trim().toLowerCase();
+  const books = document.querySelectorAll('.book');
+
+  books.forEach(book => {
+    const titleDiv = book.querySelector('.book-title');
+    const titleText = titleDiv.textContent;
+
+    if (!query) {
+      book.style.display = 'block';
+      titleDiv.innerHTML = titleText;
+      return;
+    }
+
+    if (titleText.toLowerCase().includes(query)) {
+      book.style.display = 'block';
+      const regex = new RegExp(`(${query})`, 'gi');
+      titleDiv.innerHTML = titleText.replace(regex, '<span style="background: yellow;">$1</span>');
+    } else {
+      book.style.display = 'none';
+    }
+  });
+});
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Komentlar bilan sayt</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f0e9cb,  #d4cba1f3);
+      color: #fff;
+    }
+    h1, h2, h3 {
+      text-align: center;
+      color: black;
+    }
+    .theme-toggle {
+      position: fixed;
+      top: 15px;
+      right: 20px;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      border: 3px solid rgba(255, 255, 255, 0.992); 
+      background: transparent;
+      color: #fff;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      transition: background 0.3s, color 0.3s;
+    }
+    .theme-toggle:hover {
+      background: rgba(251, 255, 1, 0.1);
+    }
+    body.dark {
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #e2e8f0;
+    }
+    body.dark h1, body.dark h2, body.dark h3 {
+      color: #f8fafc; 
+    }
+    .comment {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .fikr {
+      background-color:#fff;
+      width: 900px;
+      min-height: 200px;
+      margin: 0 auto;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 6px 15px rgba(169, 155, 155, 0.7);
+    }
+    body.dark .fikr {
+      background-color: #f1f5f9;
+      box-shadow: 0 6px 15px rgba(255, 253, 253, 0.611);
+    }
+    .send {
+      background-color: rgb(230, 14, 14);
+      border-radius: 10px;
+      padding: 8px 15px;
+      margin-top: 10px;
+      box-shadow: 0 6px 15px rgba(224, 11, 11, 0.555);
+      cursor: pointer;
+      border: none;
+      color: #fff;
+      transition: all 0.3s ease;
+    }
+    .send:hover {
+      background-color: #b91c1c;
+      transform: scale(1.05);
+    }
+    #commentInput {
+      width: 95%;
+      height: 60px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      resize: none;
+      font-size: 16px;
+      color: black;         
+      background: #fff;     
+    }
+    .comment-item {
+      background: #f4f4f4;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      color: black;         
+      position: relative;
+    }
+    .comment-time {
+      font-size: 12px;
+      color: gray;
+      margin-top: 5px;
+    }
+    .delete-btn {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: crimson;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 12px;
+      padding: 3px 6px;
+      cursor: pointer;
+    }
+    /* Dark mode uchun */
+    body.dark #commentInput {
+      background: #1e293b; 
+      color: #f8fafc;       
+      border: 1px solid #475569;
+    }
+    body.dark .comment-item {
+      background: #334155;
+      color: #f1f5f9;
+    }
+    body.dark .delete-btn {
+      background: #ef4444;
+    }
+    /* Stiker paneli */
+    .sticker-panel {
+      margin-top: 10px;
+      display: none; /* boshlang‘ichda yopiq */
+    }
+    .sticker-btn {
+      font-size: 24px;
+      margin: 3px;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+    /* Stiker tugmasi dizayni */
+    .sticker-toggle {
+      background: #fbbf24; /* sariq rang */
+      color: black;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .sticker-toggle:hover {
+      background: #f59e0b; /* hover effekti */
+      color: white;
+      transform: scale(1.05);
+    }
+    .actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+  </style>
+</head>
+<body>
+  <button id="themeToggle" class="theme-toggle">🌙</button> 
+  <div class="container">
+    <h1>Bizning sayt bilan nima qila olasiz?</h1>
+    <h2>Bizda bir qancha kitoblar bor: fantaziya janiridan achiq haqiqat bilan to'lgan tarixiy manbalargacha, 
+      sevgi bilan to'lgan asarlardan tortib o'z millatini botqoqlikdan olib chiqishga uchun yozilgan asarlargacha.
+      Bu kitoblar bilan siz kulasiz, yig'laysiz, asar qahramonlarini boshidan o'tqazgan barcha hissiyotlarni siz ham ulardek
+      his qilasiz. Bu website bilan siz qimmatli vaqtingizni to'g'ri va maroqli o'tkaza olasiz.
+    </h2>
+  </div>
+
+  <div class="comment">
+    <h3>Fikr-mulohazangizni qoldiring 👇👇👇</h3>
+  </div>
+
+  <div class="fikr">
+    <textarea id="commentInput" placeholder="Komment yozing..."></textarea>
+    <br>
+    <div class="actions">
+      <button class="sticker-toggle" onclick="toggleStickers()">😀 Stikerlar</button>
+      <button class="send" onclick="addComment()">Yuborish</button>
+    </div>
+
+    <!-- Stikerlar paneli -->
+    <div class="sticker-panel" id="stickerPanel">
+      <button class="sticker-btn" onclick="addSticker('😊')">😊</button>
+      <button class="sticker-btn" onclick="addSticker('😂')">😂</button>
+      <button class="sticker-btn" onclick="addSticker('😍')">😍</button>
+      <button class="sticker-btn" onclick="addSticker('😢')">😢</button>
+      <button class="sticker-btn" onclick="addSticker('👍')">👍</button>
+      <button class="sticker-btn" onclick="addSticker('🔥')">🔥</button>
+    </div>
+
+    <div id="commentsList"></div>
+  </div>
+
+  <script>
+    const btn = document.getElementById('themeToggle');
+
+    // Dark mode
+    if (localStorage.getItem("theme") === "dark") {
+      document.body.classList.add("dark");
+      btn.textContent = "☀️";
+    }
+    btn.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      if (document.body.classList.contains("dark")) {
+        localStorage.setItem("theme", "dark");
+        btn.textContent = "☀️";
+      } else {
+        localStorage.setItem("theme", "light");
+        btn.textContent = "🌙";
+      }
+    });
+
+    // Komment qo'shish
+    function addComment() {
+      const input = document.getElementById("commentInput");
+      const text = input.value.trim();
+      if (text) {
+        const commentList = document.getElementById("commentsList");
+        const newComment = document.createElement("div");
+        newComment.classList.add("comment-item");
+        newComment.innerHTML = `
+          <span>${text}</span>
+          <div class="comment-time">${new Date().toLocaleString()}</div>
+          <button class="delete-btn" onclick="deleteComment(this)">O‘chirish</button>
+        `;
+        commentList.appendChild(newComment);
+        input.value = "";
+
+        // Scroll pastga tushsin
+        commentList.scrollTop = commentList.scrollHeight;
+      } else {
+        alert("Iltimos, komment yozing!");
+      }
+    }
+
+    // Kommentni o‘chirish
+    function deleteComment(btn) {
+      btn.parentElement.remove();
+    }
+
+    // Stiker qo'shish
+    function addSticker(sticker) {
+      const input = document.getElementById("commentInput");
+      input.value += " " + sticker;
+      input.focus();
+    }
+
+    // Stiker panelini ko‘rsatish/yopish
+    function toggleStickers() {
+      const panel = document.getElementById("stickerPanel");
+      panel.style.display = panel.style.display === "none" ? "block" : "none";
+    }
+  </script>
+</body>
+</html>
