@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GeoSec Tracker</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="logo">GEOSEC TRACKER</h1>
+            <form method="POST" class="search-form">
+                <input type="text" name="ip" placeholder="192.168.0.1" class="input-ip">
+                <button type="submit" class="btn-primary">🔍</button>
+            </form>
+        </header>
+
+        {% if ip_info %}
+            {% if ip_info['status'] == 'success' %}
+                <main class="main">
+                    <div class="map-wrapper">
+                        <iframe src="{{ map_file }}" frameborder="0"></iframe>
+                    </div>
+
+                    <div class="info-panel">
+                        <div class="card">
+                            <p><b>🌍 COUNTRY:</b> {{ ip_info['country'] }}</p>
+                            <p><b>🏙 CITY:</b> {{ ip_info['city'] }}</p>
+                            <p><b>📡 ISP:</b> {{ ip_info['isp'] }}</p>
+                            <p><b>⚠️ THREAT SCORE:</b> 85</p>
+                            <p><b>⏰ TIMEZONE:</b> {{ ip_info['timezone'] }}</p>
+                        </div>
+
+                        <div class="card">
+                            <h3>SECURITY INSIGHTS</h3>
+                            <ul>
+                                <li>🔎 IP Blacklist</li>
+                                <li>🛡 VPN / Proxy</li>
+                                <li>🌐 ASN Info</li>
+                            </ul>
+                        </div>
+                    </div>
+                </main>
+            {% else %}
+                <p class="error">❌ Invalid IP address!</p>
+            {% endif %}
+        {% endif %}
+    </div>
+</body>
+</html>
